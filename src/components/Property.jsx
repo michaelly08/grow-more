@@ -166,7 +166,7 @@ const Property = () => {
                     {selectedProperty?.landArea.value > 0 && <span><i className='bx bx-line-chart' ></i> {selectedProperty?.landArea.value} {selectedProperty?.landArea.units}</span>}
                 </div>
 
-                <div className="property-info description" style={{whiteSpace: "pre-wrap"}}>
+                <div className="property-info description" >
                     {HTMLReactParser(selectedProperty?.description)}
                 </div>
                 <div className="property-agents" >
@@ -184,7 +184,7 @@ const Property = () => {
             </div>
             <Map lat={selectedProperty?.geolocation.latitude} long={selectedProperty?.geolocation.longitude}/>
             </>
-            : <div>Loading...</div>}
+            : <div className="lds-ring"><div></div><div></div><div></div><div></div></div>}
             
         
         </div>
@@ -202,7 +202,7 @@ const Map = ({lat, long}) => {
 
 
 
-    if(!isLoaded) return <div>Loading...</div>
+    if(!isLoaded) return <div className="lds-ring"><div></div><div></div><div></div><div></div></div>
 
 
     return (

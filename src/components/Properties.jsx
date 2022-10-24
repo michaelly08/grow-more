@@ -11,7 +11,7 @@ const Properties = () => {
     const [filteredProperty, setFilteredProperty] = useState([])
     const [button, setButton] = useState({
         activeObject: {id: "For Sale"},
-        objects: [{id: "For Sale"},{id: "Sold"},{id: "For Rent"},{id: "Leased"}]
+        objects: [{id: "For Sale"},{id: "Sold"},{id: "For Rent"}]
     })
 
 
@@ -49,10 +49,11 @@ const Properties = () => {
     }
 
 
-
+    
 
     useEffect(()=> {
         settingFilter()
+        
     }, [button])
 
 
@@ -94,7 +95,15 @@ const Properties = () => {
     
     
     // properties?.filter(property => property.status == button.activeObject.id)
+
     let uniqueProperties = [...new Set(filteredProperty)];
+    console.log(uniqueProperties)
+    
+    if (filteredProperty?.length) {
+        console.log(filteredProperty?.filter(property => property.available == false))
+    }
+    
+    
 
     return (
         <div className="properties-container">
@@ -109,13 +118,13 @@ const Properties = () => {
             </div>
 
 
-            <div className="whychoose-box">{uniqueProperties?.length} Properties {button.activeObject?.id}</div>
+            {uniqueProperties?.length ? <div className="whychoose-box">{uniqueProperties?.length} Properties {button.activeObject?.id}</div> : ""}
 
 
             <div className="properties-wrapper">
 
                 {uniqueProperties?.length ? uniqueProperties?.map(property => (
-                    <Link to={`/property/${button.activeObject.id}/${property.id}`} className="properties-box" key={property.id} onClick={() => window.scrollTo({top: 0, left: 0, behavior: 'smooth'})}>
+                    <Link to={`/property/${button.activeObject.id}/${property.id}`} className="properties-box" key={property.inserted} onClick={() => window.scrollTo({top: 0, left: 0, behavior: 'smooth'})}>
                         <img src={property.photos[0].url} alt="img"></img>
                         <div className="properties-address">
                             <span>{property?.address.streetNumber} {property?.address.street}, {capitalizeFirstLetter(property?.address.suburb.name)} {property?.address.state.abbreviation}</span>
@@ -130,7 +139,7 @@ const Properties = () => {
                         {property?.landArea.value > 0 && <div className="properties-info"><span><i className='bx bx-line-chart' ></i> {property?.landArea.value} {property?.landArea.units}</span></div>}
                         {/* <i className='bx bx-line-chart' ></i>{property?.landArea.value} {property?.landArea.units} */}
                     </Link>
-                )) : <div>Loading...</div>}
+                )) : <div className="lds-ring"><div></div><div></div><div></div><div></div></div>}
 
                 
                 
