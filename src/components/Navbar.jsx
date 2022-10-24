@@ -7,6 +7,10 @@ const Navbar = () => {
         document.querySelector("body").classList.toggle("menu-active")
     }
 
+    const menuRemove = () => {
+        document.querySelector("body").classList.remove("menu-active")
+    }
+
 
     return (
         <div className="navbar-container">
@@ -31,7 +35,7 @@ const Navbar = () => {
                         </Link>
                     </div>
                     <Link to="/form" style={{color: "black", textDecoration: "none"}} onClick={() => window.scrollTo({top: 0, left: 0, behavior: 'smooth'})}>
-                        <div className="appraisal top-options">Free Appraisal</div>
+                        <div className="appraisal top-options" onClick={menuRemove}>Free Appraisal</div>
                     </Link>
                     <div className="menu-icon top-options"><i className='bx bx-menu' onClick={menuActive}></i></div>
                 </div>
