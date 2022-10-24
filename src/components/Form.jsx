@@ -40,7 +40,7 @@ const Form = () => {
                         <option value="Free Appraisal">Free Appraisal</option>
                         <option value="An Advertise Property">An Advertise Property</option>
                         <option value="Property Management">Property Management</option>
-                        <option value="General Enquiry">General Enquiry</option>
+                        <option value="General Enquiry">General Inquiry</option>
                     </select>
                 
                 <form ref={form} onSubmit={sendEmail}>

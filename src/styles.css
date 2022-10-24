@@ -134,6 +134,10 @@ a {
 
 .menu-icon {
     display: none;
+    
+}
+.bx-menu {
+    font-size: 25px;
 }
 
 .top-options {
@@ -1210,6 +1214,12 @@ input, select{
     }
     .footer-box {
         text-align: center;
+    }
+    label, input, textarea, select {
+        font-size: 18px;
+    }
+    .form-section {
+        font-size: 24px;
     }
 }
 
